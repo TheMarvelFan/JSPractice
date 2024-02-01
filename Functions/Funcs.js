@@ -32,3 +32,17 @@ function loggedInWithDefault(username = "Sam") {
 
 console.log(loggedIn()); // when not using if block at line #22, displays: undefined just logged in.
 console.log(loggedInWithDefault());
+
+function calculateSumOfCartItems(...items) { // known as REST operator
+    let sum = 0;
+    for (let i = 0; i < items.length; i++) {
+        sum += items[i];
+    }
+    return sum;
+}
+
+function whatHappensWhenIDoThis(val1, val2, ...prices) { // duh
+    return prices;
+}
+
+console.log(whatHappensWhenIDoThis(200, 300, 400, 500, 200, 540345));
