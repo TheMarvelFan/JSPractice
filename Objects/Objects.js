@@ -41,5 +41,83 @@ console.log(user.greeting); // displays output: [Function (anonymous)]
 
 console.log(user.greeting()); // displays output:  Hello World! \n undefined
 
+const obj = new Object();
+
+obj.id = "abcd";
+obj.name = "FirstName"
+obj.isLoggedIn = true;
+
+console.log(obj); // displays {} (empty object)
+
+const regularUser = {
+    email: "something@abcd.com",
+    name: {
+        username: {
+            firstName: "Kushagra",
+            lastName: "Nigam"
+        }
+    }
+}
+
+console.log(regularUser.name.username.lastName);
+// console.log(regularUser.name?.username.lastName); // the question mark is used as a boolean check, i.e., if the name object is not null, only then access it
+
+const obj1 = {
+    1: "a", 2: "b"
+};
+const obj2 = {
+    3: "a", 4: "e"
+};
+const obj3 = {obj1, obj2}; // creates nested object, not a flat one
+
+// const obj4 = Object.assign(obj1, obj2); // creates a flat object of all keys and values present inside the objects
+
+// the above statement creates a new object to store these values, but it also modifies obj1 by adding values from all other objects to it
+// to prevent this, we can do it like this:
+
+const obj4 = Object.assign({}, obj1, obj2);
+
+// now, the values from all other objects are stored in the empty object, and obj1 is not modified
+
+const obj5 = {...obj2, ...obj1}; // easiest
+
+console.log(obj1);
+console.log(obj5);
+
+// equivalent to "const obj = {};"
+
+const objects = [
+    {
+        id: 1,
+        email: "something@somthing.com"
+    },
+    {
+        id: 2,
+        email: "something@somthing.com"
+    },
+    {
+        id: 3,
+        email: "something@somthing.com"
+    },
+    {
+        id: 4,
+        email: "something@somthing.com"
+    },
+    {
+        id: 5,
+        email: "something@somthing.com"
+    }
+]
+
+// below just like method of the Map class in java
+console.log(Object.keys(user)); // creates an array of all the keys
+console.log(Object.values(user)); // creates an array of all the values
+console.log(Object.entries(user)); // creates a 2d array of keys and values
+
+const confirmationPos = user.hasOwnProperty("isLoggedIn"); // returns whether an object has this key or not
+const confirmationNeg = user.hasOwnProperty("isLoggedOut");
+
+console.log(confirmationPos + "\n" + confirmationNeg);
+
 // through constructor
 // Object.create();
