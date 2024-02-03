@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Final DOM</title>
+</head>
+<body  style="background-color: #212121; color: white">
+    <ul class="language">
+        <li> JavaScript </li>
+    </ul>
+</body>
+<script>
+    function addLanguage(languageName) {
+        const item = document.createElement("li");
+        item.innerHTML = `${languageName}`;
+        document.querySelector('.language').appendChild(item);
+    }
+    addLanguage("Java"); // the tree is being traversed each time for running this method
+    addLanguage("Python");
+
+    function optimizedAddLanguage(languageName) {
+        const item = document.createElement("li");
+        item.appendChild(document.createTextNode(`${languageName}`));
+        document.querySelector('.language').appendChild(item);
+    }
+
+    optimizedAddLanguage("TypeScript"); // this method does not traverse the whole AST
+    // To Edit existing values
+    const secLang = document.querySelector("li:nth-child(2)"); // CSS function to select the nth (later specified) child of the specified (here, list) tag
+    const newLi = document.createElement("li");
+    newLi.textContent = "CPP";
+    secLang.replaceWith(newLi); // not to be confused with "replaceChild()", this method replaces the existing node with the new node
+
+    // Edit again
+    const firstLang = document.querySelector("li:first-child");
+    firstLang.outerHTML = '<li> C </li>'; // to change the whole structure of the HTML
+
+    // To remove existing element attribute
+    const lastLang = document.querySelector('li:last-child');
+    lastLang.remove(); // simple as that
+
+</script>
+</html>

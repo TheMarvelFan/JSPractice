@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM | ElementRelationships</title>
+</head>
+<body style="background-color: #212121; color: #fff">
+  <div class="parent">
+    <!--This comment and line break counts as 2 nodes inside the DOM tree-->
+    <div class="day">Monday</div>
+    <div class="day">Tuesday</div>
+    <div class="day">Wednesday</div>
+    <div class="day">Thursday</div>
+  </div>
+</body>
+<script>
+  const element = document.querySelector('.parent');
+  console.log(element);
+  console.log(element.children); // gives HTMLCollection
+  console.log(element.children[0].innerHTML);
+  for (let i = 0; i < element.children.length; i++) {
+    console.log(element.children[i].innerHTML);
+  }
+  element.children[1].style.color = "orange";
+  console.log(element.firstElementChild);
+  console.log(element.lastElementChild);
+
+  const firstDay = document.querySelector('.day');
+  console.log(firstDay);
+  console.log(firstDay.parentElement); // DOM tree can traverse from child to parent,
+  console.log(firstDay.nextElementSibling); // and to sibling
+  console.log("NODE: ", element.childNodes); // This prints all the child nodes of the current node
+  // But, each line break, comments and everything in the HTML document counts as a node inside the DOM tree
+  // Each text element, and each tag element counts as a node
+</script>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .bg-black {
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+    <title>DOM learning</title>
+</head>
+<body class = "bg-black">
+    <div>
+        <h1 id="title" class="heading">Learning DOM and manipulation.
+            <span style="display: none">
+                Test Text
+            </span>
+        </h1>
+        <h2> Lorem ipsum dolor sit. </h2>
+        <h2> Lorem ipsum dolor sit. </h2>
+        <h2> Lorem ipsum dolor sit. </h2>
+        <h2> Lorem ipsum dolor sit. </h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto consectetur, esse fugiat ipsam labore libero nobis numquam ratione recusandae! Accusantium dolores, et eum libero pariatur provident quis quod repellat.
+        </p>
+        <input type="password" name="" id="">
+
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+            <li class="list-item">four</li>
+        </ul>
+    </div>
+</body>
+</html>
+
+<!--console.log(window);-->
+<!--The above statement shows all the properties of an object, in this case window object-->
+
+<!--document.getElementById('title');-->
+<!--The above statement returns the element that has the ID 'title' (CSS ID)-->
+
+<!--document.getElementById('title').id;-->
+<!--The above statement returns the ID of the element that has been retrieved-->
+
+<!--document.getElementById('title').class;-->
+<!--The above statement prints undefined. To check the class of an element, we need to append "className" instead of "class" to the element retrieved-->
+<!--When appending class only, some other unknown property is returned-->
+
+<!--document.getElementById('title').className;-->
+<!--The above statement returns the name of the class to which the returned element belongs-->
+
+<!--document.getElementById('title').getAttribute("class");-->
+<!--The above "getAttribute()" method is used to retrieve value of an attribute attached to the element retrieved by passing its name, which in this case is the class-->
+
+<!--document.getElementById('title').getAttribute("id");-->
+<!--The above statement is used to retrieve the ID of the element that was retrieved-->
+
+<!--document.getElementById('title').getAttribute("className");-->
+<!--The above statement returns "null", as there is no such attribute named "className" in the tag definition-->
+
+<!--const title = document.getElementById('title');-->
+<!--Storing the retrieved element into a variable named title-->
+
+<!--title.style.backgroundColor = "green";-->
+<!--accessing the style property of the title element and changing its background color property to "green"-->
+
+<!--title.style.padding = "16px";-->
+<!--Setting the padding of the title element to "16px"-->
+
+<!--title.style.borderRadius = "10px";-->
+<!--Setting the radius of the border of title element as "10px" (making the border appear with curved edges)-->
+
+<!--title.textContent-->
+<!--Prints the text content value of the title element-->
+
+<!--title.innerHTML-->
+<!--Prints the text content value of the title element-->
+
+<!--title.innerText-->
+<!--Prints the text content value of the title element-->
+
+<!--Well, what's the difference then?-->
+
+<!--The title.textContent shows all the text that is contained inside the tag-->
+<!--The title.innerText, however, shows only the text that will be visible to the user when viewing the page. If something has been hidden using CSS or JS, then text will not be visible here either-->
+<!--The title.innerHTML tag is used to display all the HTML (plain text included) content inside the tag body. It shows tha span tags and other tags as well-->
+
+<!--document.getElementsByClassName("heading");-->
+<!--Returns an HTML collection containing various values-->
+
+<!--document.querySelector("h1");-->
+<!--The above statement returns the very first element that is a "h1" tag. This is used when there is no id or class provided to the tag in code.-->
+
+<!--document.querySelector("#title");-->
+<!--This returns the first element that has the CSS ID "title" (CSS syntax for ID or class is required here) attached to it-->
+
+<!--document.querySelector(".heading");-->
+<!--This returns the first element that has the CSS Class "title" attached to it-->
+
+<!--document.querySelector('input[type="password"]');-->
+<!--This selects the first input field wil type as password. Note that the parameter inside the function call has to be in single quote, and the type of the input field to be selected has to be in double quotes-->
+
+<!--document.querySelector('p:first-child');-->
+<!--This selects the first child tag of the "p" tag-->
+
+<!--document.querySelectorAll('li');-->
+<!--This returns a "NodeList" that looks like an array with entries containing all the list entries inside unordered list-->
+
+<!--NodeList and HTMLCollection are not pure Arrays, even though NodeList contains the forEach() function. This is proven because the arrays have other methods as well, like map method, and reduce, etc., which both of the stated data structures do not have in their prototype-->
+<!--NodeList looks and mostly works like an array, but it is not exactly array-->
+
+<!--tempList[0].style.color = "green";-->
+<!--This sets the color of the first element of the NodeList as green-->
+
+<!--tempList.forEach((li) => li.style.backgroundColor = "green");-->
+<!--This sets the background color of all the items inside NodeList as green-->
+
+<!--document.getElementByClass('list-item');-->
+<!--This returns a HTMLCollection of all the items that belong to this class-->
+<!--This HTMLCollection does not have a forEach() method. The only way to iterate over its items is to convert it into an array-->
