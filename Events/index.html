@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+<h2>Amazing image</h2>
+<ul id="images">
+<!--JS usually processes events sequentially, except async ones-->
+    <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+    <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+    <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+    <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+    <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+    <li style="color: aliceblue"><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+</ul>
+</body>
+<script>
+    // Adding onclick directly to the html code is also not profitable as it fails during application scaling. In react, however, HTML tags are
+    // scalable by default. These are pure javascript html tags, that are not auto-scalable
+    // document.getElementById('owl').onclick = () => {
+    //     alert("Owl");
+    // };
+    // the above approach works, but provides us with lesser features
+    // a better approach is to use clickEvent
+    // document.getElementById("owl").addEventListener("click", function (clickEvent) {
+    //     console.log(clickEvent); // displaying the object of type Event
+    // }, false); // events must be passed as strings
+
+    document.getElementById("images").addEventListener("click", function (clickEvent) {
+        console.log(`Clicked inside ul`); // displaying the object of type Event
+    }, false);
+
+    document.getElementById("owl").addEventListener("click", function (clickEvent) {
+        console.log(`Owl clicked`); // displaying the object of type Event
+        clickEvent.stopPropagation();
+        // this bars multiple events to be triggered at the same time, only the innermost event is triggered
+    }, false);
+
+    document.getElementById("google").addEventListener("click", (clickEvent) => {
+        console.log("Google clicked");
+        clickEvent.preventDefault();
+        clickEvent.stopPropagation();
+    })
+
+    // when one action triggers multiple events, the innermost event is executed first, in a layer format. This is called event bubbling
+    // This is the default mode of event propagation, and by default the third parameter in "addEventListener()" is false
+    // However, when we turn it to true, the process reverts and the outermost event starts to get captured first
+    // This is called event capturing, it is the reverse of bubbling
+
+    // important stuff in events: type of events, timestamp of events, defaultPrevented, target, toElement, srcElement, currentTarget, clientX,
+    // clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keycode (key events)
+
+    // Another method used to do this is attachEvent() method
+    // jQuery - old technology
+
+
+
+
+
+    // We are going to an image when it is clicked from the list
+    document.querySelector("#images").addEventListener('click', (clickEvent) => {
+        console.log(clickEvent.target.tagName); // parent node returns the tag name of the entry, that is "li" in this case
+        let removeElement = clickEvent.target;
+        if (removeElement.tagName === "IMG") {
+            removeElement.parentNode.remove(); // removes the element from the list // first approach
+            // If using the remove() method, we can see that if we click inside the list, but not on a list item, we will find that all entries
+            // of the list are removed
+            // This is because when we click inside the list, but not on a list entry, we get the parent node as "ul", and not "li"
+            // This causes the whole "ul" to be deleted instead of the ul
+
+            // removeElement.parentNode.removeChild(removeElement); // accesses the parent node of the current element, and then removes the child
+            // element that is specified in the parameters
+        }
+    }, false);
+
+</script>
+</html>
