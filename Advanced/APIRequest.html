@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121">
+    Lots and Lots of text
+</body>
+<script>
+    const reqUrl = "https://api.github.com/users/TheMarvelFan";
+    const req = new XMLHttpRequest(); // to create an object of type XMLHttpRequest // state 0
+    req.open("GET", reqUrl); // state 1
+    req.onreadystatechange = () => { // whenever the ready state of the function changes, this method is called
+        console.log(req.readyState);
+        if (req.readyState === 4) {
+            const response = JSON.parse(req.responseText); // This is converted to JSON file now, and data can be fetched easily
+            // console.log(this.responseText); // this does not work and displays undefined, as "this" is being interpreted as the object of "Window" for some reason
+            // received response is always in string
+            console.log(response["followers"]);
+        }
+    };
+    req.send(); // this method calls the above "open" method
+
+    // Aside: Console.log() is accessed from "console.cc" file inside d8 engine. It is a function inside this file. JS is internally written in C++
+</script>
+</html>

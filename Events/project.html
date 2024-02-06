@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> First Project </title>
+</head>
+<body>
+    <h1>
+        This is some text.
+    </h1>
+    <button id="stop"> Stop </button>
+</body>
+<script>
+    const sayMyName = function () {
+        console.log("Kushagra");
+    }
+
+    const changeText = function () {
+        document.querySelector("h1").innerHTML = `Saying something`;
+    }
+
+    // This requires a handler function, and some timeout, in which whatever is specified inside this function will be done after the specified time once
+    // We can also pass the reference of a function here instead of declaring it
+    // The "window" Object in the browser by default contains this function, as well as many others
+    // Used in places where some given amount of time later some popup has to be shown, etc.
+    const timedOut = setTimeout(changeText, 2000); // Web API method
+
+    document.querySelector('#stop').addEventListener("click", (clickEvent) => {
+        console.log(`Stopped timeout.`);
+        clearTimeout(timedOut);
+    });
+</script>
+</html>
