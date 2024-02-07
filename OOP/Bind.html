@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React</title>
+</head>
+<body>
+    <button>
+        Button Clicked
+        <script>
+            class React {
+                constructor() {
+                    this.library = "React";
+                    this.server = "https://localhost:3000";
+                    // requirement is to create an object whenever page is created
+                    document
+                        .querySelector("button")
+                        .addEventListener("click", this.handleClick
+                            .bind(this)); // "bind" keyword is used to attach "this" property to a function call being sent out to another function
+                                          // so that the function that is being called has full access to this property
+                }
+
+                handleClick() {
+                    console.log("Button Clicked");
+                    console.log(this.server);
+                }
+            }
+
+            const app = new React();
+        </script>
+    </button>
+</body>
+</html>
