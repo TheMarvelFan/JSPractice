@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Closure </title>
+</head>
+<body style="background-color: #313131">
+    <button class="red">
+        red
+    </button>
+
+    <button class="green">
+        green
+    </button>
+    <script>
+//        // Lexical Scoping
+//
+//        function init() {
+//            let name = "Mozilla";
+//            function displayName() {
+//                console.log(name);
+//            }
+//            displayName();
+//        }
+//        init();
+//
+//        function outer() {
+//            let username = "Kush";
+//            function innerFunction() {
+//                console.log(username); // properties in outer scope is accessible in the inner function's scope
+//            }
+//            innerFunction();
+//        }
+//        outer();
+//
+//        // Closure
+//        function makeFunc() {
+//            const name = "Mozilla";
+//            function displayName() {
+//                console.log(name);
+//            }
+//            return displayName; // reference of inner function is returned
+//        }
+//
+//        const myFunc = makeFunc(); // here, all the lexical scope is returned along with the inner function
+//        myFunc();
+    </script>
+    <script>
+        // document.getElementsByClassName("green").onclick = function () {
+        //     document.body.style.backgroundColor = `green`;
+        // };
+        //
+        // document.getElementsByClassName("red").onclick = function () {
+        //     document.body.style.backgroundColor = `red`;
+        // };
+
+        function clickHandler(color) {
+            // document.body.style.backgroundColor = `${color}`; // this will not work, as the value passed here is set by default as the background
+            // color without the buttonClick event
+            return function () {
+                document.body.style.backgroundColor = `${color}`;
+            }
+        }
+
+        document.getElementsByClassName("green").onclick = clickHandler("green"); // we need to pass the reference of a function here instead of
+        // executing it
+        document.getElementsByClassName("red").onclick = clickHandler("red");
+    </script>
+</body>
+</html>
